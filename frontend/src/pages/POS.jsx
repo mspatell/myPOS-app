@@ -1,15 +1,17 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import MainLayout from '../layouts/MainLayout'
+import axios from "axios"
 
 export default function POS() {
 
-    useEffect(() => {
-      first
-    
-      return () => {
-        second
-      }
-    }, [third])
+  const [products, setProducts] = useState([]);
+
+  const fetchProducts = async() => {
+    const result = await axios.get('products');
+    setProducts(await result.data);
+  }
+
+  useEffect(() => {fetchProducts()}, []);
     
 
   return (
@@ -18,3 +20,5 @@ export default function POS() {
     </MainLayout>
   )
 }
+
+
