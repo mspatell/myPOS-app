@@ -9,7 +9,7 @@ function MainLayout({children}) {
     <header>
       <nav className="navbar navbar-light bg-primary">
         <div className="container">
-          <Link to="/" className="navbar-brand">DevPOS</Link>
+          <Link to="/" className="navbar-brand">Cloud POS</Link>
         </div>
       </nav>
     </header>

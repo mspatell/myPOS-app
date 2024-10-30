@@ -12,6 +12,10 @@ export default function POS() {
   }
 
   useEffect(() => {fetchProducts()}, []);
+  useEffect(() => {
+    console.log(products)
+  }, [products]);
+
     
 
   return (
