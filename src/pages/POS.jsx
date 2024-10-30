@@ -1,11 +1,11 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 import MainLayout from '../layouts/MainLayout'
 import axios from "axios"
 import { toast } from 'react-toastify';
 import { ComponentToPrint } from '../components/ComponentToPrint';
 import { useReactToPrint } from 'react-to-print';
 
-export default function POS() {
+function POS() {
 
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -16,7 +16,6 @@ export default function POS() {
     autoClose: 400,
     pauseOnHover: true,
   }
-
 
   const fetchProducts = async() => {
     setIsLoading(true);
@@ -75,11 +74,13 @@ export default function POS() {
   });
 
   const handlePrint = () => {
+    console.log("Printing PDF..."); 
     handleReactToPrint();
   }
 
-
-  useEffect(() => {fetchProducts()}, []);
+  useEffect(() => {
+    fetchProducts();
+  },[]);
 
   useEffect(() => {
     let newTotalAmount = 0;
@@ -89,11 +90,6 @@ export default function POS() {
     setTotalAmount(newTotalAmount);
   },[cart])
 
-  // useEffect(() => {
-  //   console.log(products)
-  // }, [products]);
-
-    
 
   return (
     <MainLayout>
@@ -115,7 +111,7 @@ export default function POS() {
         </div>
         <div className='col-lg-4'>
               <div style={{display: "none"}}>
-                <ComponentToPrint cart={cart} totalAmount={totalAmount} ref={componentRef}/>
+              <ComponentToPrint ref={componentRef} cart={cart} totalAmount={totalAmount} />
               </div>
               <div className='table-responsive bg-dark'>
                 <table className='table table-responsive table-dark table-hover'>
@@ -166,4 +162,4 @@ export default function POS() {
   )
 }
 
-
+export default POS
