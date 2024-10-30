@@ -1,0 +1,3 @@
+- yarn add json-server
+- yarn server
+- yarn start
